@@ -2,26 +2,31 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class Main {
+    public static final int MAX_N = 1000;
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int[] numbers = new int[n];
-        for (int i = 0; i < n; i++) {
+        int[] numbers = new int[2 * MAX_N];
+
+        for (int i = 0; i < 2 * n; i++) {
             numbers[i] = sc.nextInt();
         }
 
-        System.out.println(maxMinGroupSum(n, numbers));
+        Arrays.sort(numbers, 0, 2 * n);
 
-    }
-
-    private static int maxMinGroupSum(int n, int[] numbers) {
-        Arrays.sort(numbers);
-        int maxSum = 0;
+        int groupMax = 0;
         for (int i = 0; i < n; i++) {
-            maxSum = Math.max(maxSum, numbers[i] + numbers[numbers.length - 1 - i]);
+            // i 번째와 2n - 1 - i 번째 원소를 매칭하기
+            int groupSum = numbers[i] + numbers[2 * n - 1 - i];
+            if (groupSum > groupMax) {
+                groupMax = groupSum;
+            }
         }
-        return maxSum;
+
+        System.out.println(groupMax);
+
     }
 }
