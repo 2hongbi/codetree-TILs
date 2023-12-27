@@ -12,6 +12,6 @@ for i in range(1, r):
                 if grid[0][0] != grid[i][j] and \
                    grid[i][j] != grid[k][l] and \
                    grid[k][l] != grid[r - 1][c - 1]:
-                    cnt += 1
+                        cnt += 1
                         
 print(cnt)
