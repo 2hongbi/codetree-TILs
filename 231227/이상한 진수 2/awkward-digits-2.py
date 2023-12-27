@@ -1,12 +1,22 @@
-a = input()
+import sys
 
-max_a = int(a, 2)
+INT_MIN = -sys.maxsize
 
-for i in range(len(a)):
-    if a[i] == '0':
-        temp = a[:i] + '1' + a[i+1:]
-    else:
-        temp = a[:i] + '0' + a[i+1:]
-    max_a = max(max_a, int(temp, 2))
+binary = list(map(int, list(input())))
+length = len(binary)
 
-print(max_a)
+# 각 i번째 자릿수를 바꾸었을 때의 십진수 값을 구해주기
+ans = INT_MIN
+for i in range(length):
+    binary[i] = 1 - binary[i]
+
+    # 십진수로 변환
+    num = 0
+    for j in range(length):
+        num = num * 2 + binary[j]
+    ans = max(ans, num)
+
+    # 돌려놓기
+    binary[i] = 1 - binary[i]
+
+print(ans)
