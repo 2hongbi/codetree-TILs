@@ -1,10 +1,17 @@
+from collections import defaultdict
+
 n, m = map(int, input().split())
 numbers = list(map(int, input().split()))
 
-answer = []
-target = map(int, input().split())
-for t in target:
-    answer.append(numbers.count(t))
+num_cnt_dict = defaultdict(int)
+for n in numbers:
+    num_cnt_dict[n] += 1
 
-for a in answer:
-    print(a, end=' ')
+target = map(int, input().split())
+# for t in target:
+    # answer.append(numbers.count(t))
+
+for t in target:
+    print(num_cnt_dict[t], end=' ')
+
+# print(' '.join(list(map(str, answer))))
