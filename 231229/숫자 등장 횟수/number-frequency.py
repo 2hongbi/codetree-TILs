@@ -6,4 +6,5 @@ target = map(int, input().split())
 for t in target:
     answer.append(numbers.count(t))
 
-print(' '.join(list(map(str, answer))))
+for a in answer:
+    print(a, end=' ')
