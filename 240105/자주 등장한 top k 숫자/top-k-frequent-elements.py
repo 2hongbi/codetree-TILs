@@ -5,11 +5,8 @@ count = dict()
 for num in numbers:
     count[num] = count.get(num, 0) + 1
 
-answer = []
-for key, value in count.items():
-    if value == k:
-        answer.append(key)
+sorted_cnt = sorted(count.items(), key=lambda x: (-x[1], -x[0]))
+sorted_keys = [key for key, value in sorted_cnt]
 
-answer.sort(reverse=True)
-for a in answer:
-    print(a, end=' ')
+for key in sorted_keys[:k]:
+    print(key, end=' ')
