@@ -11,13 +11,11 @@ def in_range(x, y):
 dir_num = directions[dir]
 x, y = int(x), int(y)
 
-sec = 0
-while sec != t:
+for _ in range(t):
     nx, ny = x + dxs[dir_num], y + dys[dir_num]
-    if not in_range(nx, ny):
+    if in_range(nx, ny):
+        x, y = nx, ny
+    else:
         dir_num = 3 - dir_num
-        sec += 1
-    x, y = x + dxs[dir_num], y + dys[dir_num]
-    sec += 1
 
 print(x, y)
