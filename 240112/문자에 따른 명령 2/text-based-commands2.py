@@ -6,9 +6,9 @@ dx, dy = [1, 0, -1, 0], [0, -1, 0, 1]
 
 for command in commands:
     if command == 'L':
-        dir_num -= 1
+        dir_num = (dir_num - 1 + 4) % 4
     elif command == 'R':
-        dir_num += 1
+        dir_num = (dir_num + 1) % 4
     elif command == 'F':
         x, y = x + dx[dir_num], y + dy[dir_num]
 
