@@ -11,7 +11,7 @@ def fill_grid(n, m):
     dir_num = 0
 
     for i in range(n * m):
-        grid[x][y] = chr(65 + (i % 65))
+        grid[x][y] = chr(65 + (i % 26))
         nx, ny = x + dxs[dir_num], y + dys[dir_num]
 
         if not in_range(nx, ny) or grid[nx][ny]!= 0:
