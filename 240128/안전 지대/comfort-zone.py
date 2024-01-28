@@ -4,26 +4,14 @@ grid = [
     for _ in range(n)
 ]
 
-max_k = 0
-for row in grid:
-    temp = max(row)
-    max_k = max(max_k, temp)
-
 def in_range(x, y):
     return 0 <= x < n and 0 <= y < m
 
 def can_go(x, y, k):
-    if not in_range(x, y):
-        return False
-    if visited[x][y] or grid[x][y] < k:
-        return False
-    return True
+    return in_range(x, y) and not visited[x][y] and grid[x][y] > k
 
 def dfs(x, y, k):
-    global cnt
-
     visited[x][y] = True
-    cnt += 1
 
     dxs, dys = [0, 1, 0, -1], [1, 0, -1, 0]
     for dx, dy in zip(dxs, dys):
@@ -31,16 +19,22 @@ def dfs(x, y, k):
         if can_go(nx, ny, k):
             dfs(nx, ny, k)
 
-count_list = list()
-visited = [[False] * m for _ in range(n)]
-cnt = 0
-for k in range(1, max_k + 1):
+
+max_safe_area = 0
+best_k = 0
+
+for k in range(101):  # 높이의 최대값은 100이므로
+    visited = [[False] * m for _ in range(n)]
+    safe_area_count = 0
+
     for i in range(n):
         for j in range(m):
-            if grid[i][j] < k and not visited[i][j]:
-                cnt += 1
+            if can_go(i, j, k):
                 dfs(i, j, k)
-                count_list.append(cnt)
-                visited = [[False] * m for _ in range(n)]
+                safe_area_count += 1
 
-print(count_list)
+    if safe_area_count > max_safe_area:
+        max_safe_area = safe_area_count
+        best_k = k
+
+print(best_k, max_safe_area)
