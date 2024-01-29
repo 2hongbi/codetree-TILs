@@ -15,7 +15,7 @@ def can_go(x, y, k):
 
 
 def dfs(x, y, k):
-    global cnt, max_value
+    global cnt
     visited[x][y] = True
     cnt += 1
 
