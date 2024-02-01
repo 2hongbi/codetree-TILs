@@ -5,7 +5,8 @@ start_points = [tuple(map(int, input().split())) for _ in range(n)]
 
 ans = sys.maxsize
 
-for idx in range(n):
+# 1번과 n번 포인트는 건너뛰면 안됨
+for idx in range(1, n - 1):
     temp_x, temp_y = 0, 0
     total = 0
 
