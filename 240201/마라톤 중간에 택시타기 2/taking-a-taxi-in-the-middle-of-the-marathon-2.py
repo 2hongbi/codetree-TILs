@@ -7,7 +7,7 @@ ans = sys.maxsize
 
 # 1번과 n번 포인트는 건너뛰면 안됨
 for idx in range(1, n - 1):
-    temp_x, temp_y = 0, 0
+    temp_x, temp_y = start_points[0][0], start_points[0][1]
     total = 0
 
     for i in range(n):
