@@ -21,20 +21,22 @@ def can_go(x, y):
 
 
 def bfs(x, y):
-    queue = deque([(x, y)])
+    queue = deque([(x, y, 0)])
     visited[x][y] = True
     
     while queue:
-        x, y = queue.popleft()
+        x, y, dist = queue.popleft()
+        if x == n - 1 and y == m - 1: # 목적지 도달 시 바로 반환
+            return dist
         for dx, dy in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
             nx, ny = x + dx, y + dy
             if can_go(nx, ny):
-                queue.append((nx, ny))
+                queue.append((nx, ny, dist + 1))
                 visited[nx][ny] = True
-                grid[nx][ny] = grid[x][y] + 1
+                
 
-bfs(0, 0)
-if visited[n - 1][n - 1]:
-    print(grid[n - 1][n - 1] - 1)
-else:
-    print(-1)
+    # 목적지에 도달할 수 없는 경우
+    return -1
+
+
+print(bfs(0, 0))
