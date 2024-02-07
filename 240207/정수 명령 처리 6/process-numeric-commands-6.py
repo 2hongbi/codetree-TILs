@@ -32,7 +32,7 @@ n = int(input())
 for _ in range(n):
     st = input()
     if st.startswith('push'):
-        cmd, num = st.split()
+        _, num = st.split()
         pq.push(int(num))
     elif st == 'pop':
         print(pq.pop())
