@@ -1,6 +1,8 @@
 n = int(input())
 b_cards = [int(input()) for _ in range(n)] 
-a_cards = [i for i in range(1, 2 * n + 1) if i not in b_cards]
+
+b_set = set(b_cards)
+a_cards = [num for num in range(1, 2 * n + 1) if num not in b_set]
 
 a_cards.sort()
 b_cards.sort()
