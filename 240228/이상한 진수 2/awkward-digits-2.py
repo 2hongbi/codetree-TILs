@@ -1,4 +1,8 @@
 def find_max(a):
+    if a == '1':
+        return 0
+
+
     # a를 list로 변환
     a_list = list(a)
 
