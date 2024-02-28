@@ -2,6 +2,8 @@ def find_max(a):
     if a == '1':
         return 0
 
+    if all(c == '1' for c in a):
+        return int(a[:-1] + '0', 2)
 
     # a를 list로 변환
     a_list = list(a)
@@ -12,6 +14,7 @@ def find_max(a):
     for i in range(len(a_list)):
         if a_list[i] == '0':
             a_list[i] = '1'
+            print(a_list, int(''.join(a_list), 2))
             max_val = max(max_val, int(''.join(a_list), 2))
             a_list[i] = '0'
 
