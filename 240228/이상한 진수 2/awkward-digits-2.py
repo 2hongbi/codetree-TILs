@@ -14,7 +14,6 @@ def find_max(a):
     for i in range(len(a_list)):
         if a_list[i] == '0':
             a_list[i] = '1'
-            print(a_list, int(''.join(a_list), 2))
             max_val = max(max_val, int(''.join(a_list), 2))
             a_list[i] = '0'
 
